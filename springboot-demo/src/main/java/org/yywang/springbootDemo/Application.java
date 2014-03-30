@@ -1,4 +1,4 @@
-package com.iflytek.springbootDemo;
+package org.yywang.springbootDemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
