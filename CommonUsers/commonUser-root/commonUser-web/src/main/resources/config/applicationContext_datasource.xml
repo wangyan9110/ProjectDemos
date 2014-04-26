@@ -16,7 +16,7 @@
      http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
     ">	
-    
+
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
      <property name="locations">
      <list>
@@ -25,7 +25,7 @@
      </property>
     </bean>
     
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="mainDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     
 	    <property name="driverClassName">
 	    	<value>${jdbc.driver}</value>
@@ -64,12 +64,11 @@
     <!-- Spring bean configuration for LazyConnectionDataSourceProxy -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
 		<property name="targetDataSource">
-			<ref local="dataSource" />
+			<ref local="mainDataSource" />
 		</property>
 	</bean>
     
-    <bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
