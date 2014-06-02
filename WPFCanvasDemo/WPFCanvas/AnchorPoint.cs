@@ -112,7 +112,7 @@ namespace WPFCanvas
         /// 绘制对象
         /// </summary>
         /// <returns>绘制的矩形</returns>
-        public Rectangle draw() 
+        public Rectangle Draw() 
         {
             double offset = this.Width / 2;
             Rectangle retc = new Rectangle()
@@ -129,7 +129,7 @@ namespace WPFCanvas
             return retc;
         }
 
-        public void move(double x,double y)
+        public void Move(double x,double y)
         {
             double offset = this.Width / 2;
             this.retc.Margin = new Thickness(x-offset,y-offset,0,0);
@@ -137,7 +137,7 @@ namespace WPFCanvas
             this.Y = y;
         }
 
-        public void move()
+        public void Move()
         {
             double offset = this.Width / 2;
             this.retc.Margin = new Thickness(X - offset, Y - offset, 0, 0);

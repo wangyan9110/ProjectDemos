@@ -21,11 +21,11 @@ namespace WPFCanvas
         public VarRectTest()
         {
             InitializeComponent();
-            VarRectangle varRect = new VarRectangle(answerCard, getPoints());
-            varRect.init();
+            VarRectangle varRect = new VarRectangle(answerCard, GetPoints());
+            varRect.Init();
         }
 
-        private List<Point> getPoints()
+        private List<Point> GetPoints()
         {
             List<Point> points = new List<Point>();
             points.Add(new Point(100, 100));

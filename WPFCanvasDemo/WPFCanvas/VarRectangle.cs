@@ -58,26 +58,27 @@ namespace WPFCanvas
             }
         }
 
-        public void init()
+        public void Init()
         {
             //按x轴分类
             IEnumerable<IGrouping<double, Point>> pointXs = points.GroupBy(o => o.X);
             //按y周分类
             IEnumerable<IGrouping<double, Point>> pointYs = points.GroupBy(o => o.Y);
             //绘制竖线
-            drawXLine(pointXs);
+            DrawXLine(pointXs);
             //绘制横线
-            drawYLine(pointYs);
+            DrawYLine(pointYs);
             //设置定位点
-            addAnchorPoints();
+            AddAnchorPoints();
             //绘制定位点并且添加事件
             foreach (AnchorPoint anchorPoint in anchorPoints)
             {
-                Rectangle rec=anchorPoint.draw();
+                Rectangle rec=anchorPoint.Draw();
                 rec.MouseLeftButtonDown += new MouseButtonEventHandler(rec_MouseLeftButtonDown);
                 rec.MouseMove += new MouseEventHandler(rec_MouseMove);
                 canvas.Children.Add(rec);
             }
+            //canvas添加事件
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_MouseLeftButtonUp);
             canvas.MouseMove += new MouseEventHandler(canvas_MouseMove);
             canvas.MouseLeave += new MouseEventHandler(canvas_MouseLeave);
@@ -109,21 +110,21 @@ namespace WPFCanvas
                 {
                     curX = curAnchorPoint.X;
                     curY = point.Y;
-                    moveLines(curX, curY);
-                    moveAnchorPoint(curX, curY);
-                    curAnchorPoint.move(curX, curY);
+                    MoveLines(curX, curY);
+                    MoveAnchorPoint(curX, curY);
+                    curAnchorPoint.Move(curX, curY);
                 }
                 else if (Cursors.SizeWE == curAnchorPoint.Cursor)
                 {
-                    moveLines(point.X, curAnchorPoint.Y);
-                    moveAnchorPoint(point.X, curAnchorPoint.Y);
-                    curAnchorPoint.move(point.X, curAnchorPoint.Y);
+                    MoveLines(point.X, curAnchorPoint.Y);
+                    MoveAnchorPoint(point.X, curAnchorPoint.Y);
+                    curAnchorPoint.Move(point.X, curAnchorPoint.Y);
                 }
                 else
                 {
-                    moveLines(point.X,point.Y);
-                    moveAnchorPoint(point.X, point.Y);
-                    curAnchorPoint.move(point.X, point.Y);
+                    MoveLines(point.X,point.Y);
+                    MoveAnchorPoint(point.X, point.Y);
+                    curAnchorPoint.Move(point.X, point.Y);
                 }
             }
         }
@@ -132,7 +133,7 @@ namespace WPFCanvas
         /// 移动定位点
         /// </summary>
         /// <returns></returns>
-        private void moveAnchorPoint(double x,double y)
+        private void MoveAnchorPoint(double x,double y)
         {
             List<AnchorPoint> moveAnchorPoints = new List<AnchorPoint>();
             if (curAnchorPoint.AnchorPointType == AnchorPointType.NS)
@@ -148,7 +149,7 @@ namespace WPFCanvas
             }
             foreach (AnchorPoint anchorPoint in moveAnchorPoints)
             {
-                moveAnchorPoint(x, y, anchorPoint);
+                MoveAnchorPoint(x, y, anchorPoint);
             }
         }
 
@@ -158,93 +159,92 @@ namespace WPFCanvas
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="anchorPoint"></param>
-        private void moveAnchorPoint(double x, double y, AnchorPoint anchorPoint)
+        private void MoveAnchorPoint(double x, double y, AnchorPoint anchorPoint)
         {
             double preX = anchorPoint.X;
             double preY = anchorPoint.Y;
             if (curAnchorPoint.AnchorPointType == AnchorPointType.NS)
             {
-                anchorPoint.move(anchorPoint.X, y);
-                moveRefAnchorPoint(preX, preY, anchorPoint);
+                anchorPoint.Move(anchorPoint.X, y);
+                MoveRefAnchorPoint(preX, preY, anchorPoint);
             }
             else if (curAnchorPoint.AnchorPointType == AnchorPointType.WE)
             {
-                anchorPoint.move(x, anchorPoint.Y);
-                moveRefAnchorPoint(preX, preY, anchorPoint);
+                anchorPoint.Move(x, anchorPoint.Y);
+                MoveRefAnchorPoint(preX, preY, anchorPoint);
             }
             else
             {
                 if (anchorPoint.AnchorPointType == AnchorPointType.NS)
                 {
-                    anchorPoint.move(anchorPoint.X, y);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    anchorPoint.Move(anchorPoint.X, y);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
                 else if (anchorPoint.AnchorPointType == AnchorPointType.WE)
                 {
-                    anchorPoint.move(x, anchorPoint.Y);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    anchorPoint.Move(x, anchorPoint.Y);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
                 else if (curAnchorPoint.AnchorPointType == AnchorPointType.NE)
                 {
                     if (anchorPoint.AnchorPointType == AnchorPointType.SE)
                     {
-                        anchorPoint.move(anchorPoint.X, y);
+                        anchorPoint.Move(anchorPoint.X, y);
                     }
                     else if (anchorPoint.AnchorPointType == AnchorPointType.NW)
                     {
-                        anchorPoint.move(x, anchorPoint.Y);
+                        anchorPoint.Move(x, anchorPoint.Y);
                     }
                     
-                    moveRefAnchorPoint(preX, preY, x, y, anchorPoint);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, x, y, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
                 else if (curAnchorPoint.AnchorPointType == AnchorPointType.SW)
                 {
                     if (anchorPoint.AnchorPointType == AnchorPointType.SE)
                     {
-                        anchorPoint.move(x, anchorPoint.Y);
+                        anchorPoint.Move(x, anchorPoint.Y);
                     }
                     else if (anchorPoint.AnchorPointType == AnchorPointType.NW)
                     {
-                        anchorPoint.move(anchorPoint.X, y);
+                        anchorPoint.Move(anchorPoint.X, y);
                     }
                     
-                    moveRefAnchorPoint(preX, preY, x, y, anchorPoint);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, x, y, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
                 else if (curAnchorPoint.AnchorPointType == AnchorPointType.SE)
                 {
                     if (anchorPoint.AnchorPointType == AnchorPointType.SW)
                     {
-                        anchorPoint.move(x, anchorPoint.Y);
+                        anchorPoint.Move(x, anchorPoint.Y);
                     }
                     else if (anchorPoint.AnchorPointType == AnchorPointType.NE)
                     {
-                        anchorPoint.move(anchorPoint.X, y);
+                        anchorPoint.Move(anchorPoint.X, y);
                     }
                     
-                    moveRefAnchorPoint(preX, preY, x, y, anchorPoint);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, x, y, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
                 else if (curAnchorPoint.AnchorPointType == AnchorPointType.NW)
                 {
                     if (anchorPoint.AnchorPointType == AnchorPointType.SW)
                     {
-                        anchorPoint.move(anchorPoint.X, y);
+                        anchorPoint.Move(anchorPoint.X, y);
                     }
                     else if (anchorPoint.AnchorPointType == AnchorPointType.NE)
                     {
-                        anchorPoint.move(x, anchorPoint.Y);
+                        anchorPoint.Move(x, anchorPoint.Y);
                     }
                     
-                    moveRefAnchorPoint(preX, preY, x, y, anchorPoint);
-                    moveRefAnchorPoint(preX, preY, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, x, y, anchorPoint);
+                    MoveRefAnchorPoint(preX, preY, anchorPoint);
                 }
             }
-
         }
 
-        private void moveRefAnchorPoint(double preX, double preY, double x, double y, AnchorPoint movedAnchorPoint)
+        private void MoveRefAnchorPoint(double preX, double preY, double x, double y, AnchorPoint movedAnchorPoint)
         {
             foreach (AnchorPoint anchorPoint in anchorPoints)
             {
@@ -269,12 +269,12 @@ namespace WPFCanvas
                     }
                     anchorPoint.X = (anchorPoint.RefPoint[0].X + anchorPoint.RefPoint[1].X) / 2;
                     anchorPoint.Y = (anchorPoint.RefPoint[0].Y + anchorPoint.RefPoint[1].Y) / 2;
-                    anchorPoint.move();
+                    anchorPoint.Move();
                 }
             }
         }
 
-        private void moveRefAnchorPoint(double x, double y,AnchorPoint movedAnchorPoint)
+        private void MoveRefAnchorPoint(double x, double y,AnchorPoint movedAnchorPoint)
         {
             foreach (AnchorPoint anchorPoint in anchorPoints)
             {
@@ -292,12 +292,12 @@ namespace WPFCanvas
                     }
                     anchorPoint.X = (anchorPoint.RefPoint[0].X + anchorPoint.RefPoint[1].X) / 2;
                     anchorPoint.Y = (anchorPoint.RefPoint[0].Y + anchorPoint.RefPoint[1].Y) / 2;
-                    anchorPoint.move();
+                    anchorPoint.Move();
                 }
             }
         }
 
-        private void moveLines(double x, double y)
+        private void MoveLines(double x, double y)
         {
             List<Line> moveLines = new List<Line>();
             moveLines = lines.Where(o => o.Y1 == curAnchorPoint.Y
@@ -343,13 +343,13 @@ namespace WPFCanvas
         /// 绘制竖线
         /// </summary>
         /// <param name="pointYs"></param>
-        private void drawYLine(IEnumerable<IGrouping<double, Point>> pointYs)
+        private void DrawYLine(IEnumerable<IGrouping<double, Point>> pointYs)
         {
             foreach (IGrouping<double, Point> pointY in pointYs)
             {
                 double x1 = pointY.Max(o => o.X);
                 double x2 = pointY.Min(o => o.X);
-                drawLine(x1, pointY.Key, x2, pointY.Key);
+                DrawLine(x1, pointY.Key, x2, pointY.Key);
                 if (pointY.Count() == 2)
                 {
                     Point[] points=new Point[2];
@@ -360,7 +360,7 @@ namespace WPFCanvas
                 else
                 {
                     IEnumerable<Point> pointYOrdereds = pointY.OrderBy(o => o.X);
-                    addMiddleAnchorPoints(pointYOrdereds);
+                    AddMiddleAnchorPoints(pointYOrdereds);
                 }
             }
         }
@@ -369,13 +369,13 @@ namespace WPFCanvas
         /// 绘制横线
         /// </summary>
         /// <param name="pointXs"></param>
-        private void drawXLine(IEnumerable<IGrouping<double, Point>> pointXs)
+        private void DrawXLine(IEnumerable<IGrouping<double, Point>> pointXs)
         {
             foreach (IGrouping<double, Point> pointX in pointXs)
             {
                 double y1 = pointX.Max(o => o.Y);
                 double y2 = pointX.Min(o => o.Y);
-                drawLine(pointX.Key,y1,pointX.Key,y2);
+                DrawLine(pointX.Key,y1,pointX.Key,y2);
                 if (pointX.Count() <= 2)
                 {
                     Point[] points = new Point[2];
@@ -386,7 +386,7 @@ namespace WPFCanvas
                 else
                 {
                     IEnumerable<Point> pointXOrdereds = pointX.OrderBy(o => o.Y);
-                    addMiddleAnchorPoints(pointXOrdereds);
+                    AddMiddleAnchorPoints(pointXOrdereds);
                 }
             }
         }
@@ -395,7 +395,7 @@ namespace WPFCanvas
         /// 添加定位点
         /// 每个点
         /// </summary>
-        private void addAnchorPoints()
+        private void AddAnchorPoints()
         {
             double minX = points.Min(o => o.X);
             double maxX = points.Max(o => o.X);
@@ -434,7 +434,7 @@ namespace WPFCanvas
         /// 添加线的中点定位点
         /// </summary>
         /// <param name="pointYOrdereds"></param>
-        private void addMiddleAnchorPoints(IEnumerable<Point> pointYOrdereds)
+        private void AddMiddleAnchorPoints(IEnumerable<Point> pointYOrdereds)
         {
             Point[] pointYOrderedArray = pointYOrdereds.ToArray();
             for (int index = 0; index < pointYOrderedArray.Length - 1; index++)
@@ -455,7 +455,7 @@ namespace WPFCanvas
         /// <param name="y1"></param>
         /// <param name="x2"></param>
         /// <param name="y2"></param>
-        private void drawLine(double x1,double y1,double x2,double y2)
+        private void DrawLine(double x1,double y1,double x2,double y2)
         {
             Line line = new Line()
             {
