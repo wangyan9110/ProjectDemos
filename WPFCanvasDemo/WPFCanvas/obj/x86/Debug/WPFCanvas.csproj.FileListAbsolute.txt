@@ -1,0 +1,15 @@
+E:\Project\WPF\WPFCanvas\WPFCanvas\bin\Debug\WPFCanvas.exe
+E:\Project\WPF\WPFCanvas\WPFCanvas\bin\Debug\WPFCanvas.pdb
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\MainWindow.baml
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\MainWindow.g.cs
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\App.g.cs
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas_MarkupCompile.cache
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas.g.resources
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas.Properties.Resources.resources
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas.csproj.GenerateResource.Cache
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas.exe
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\WPFCanvas.pdb
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\CursorTest.baml
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\CursorTest.g.cs
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\VarRectTest.baml
+E:\Project\WPF\WPFCanvas\WPFCanvas\obj\x86\Debug\VarRectTest.g.cs

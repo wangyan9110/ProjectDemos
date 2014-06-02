@@ -1,0 +1,10 @@
+﻿<Window x:Class="WPFCanvas.VarRectTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VarRectTest" Height="600" Width="800">
+    <Grid>
+        <Canvas Height="500" HorizontalAlignment="Left"
+                Margin="40,40,0,0" Name="answerCard" VerticalAlignment="Top" Width="700" 
+                />
+    </Grid>
+</Window>
