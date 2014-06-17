@@ -81,11 +81,9 @@ window.varRect=window.varRect||{};
         if(this._point1.x==this._point2.x){
             ctx.clearRect(this._point1.x,this._point1.y,this._point2.x-this._point1.x,2);
         }else{
-            ctx.clearRect()
+            ctx.clearRect(this._point1.x,this._point2)
         }
     }
-
-
 
     function Rect(rect){
         this._points=rect.getPoints();
