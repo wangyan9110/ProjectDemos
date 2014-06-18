@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/line.js"></script>
+</head>
+<body>
+<canvas id="canvas"  width="600px" height="500px"></canvas>
+
+<script type="text/javascript">
+
+    var canvas=document.getElementById("canvas");
+    var line=new tool.Line(100,100,100,400);
+    line.draw(canvas);
+
+    canvas.addEventListener('click',function(e){
+        if(line.isAction(e.clientX, e.clientY)){
+            line.move(100,200,100,400);
+        }
+    });
+
+</script>
+</body>
+</html>
