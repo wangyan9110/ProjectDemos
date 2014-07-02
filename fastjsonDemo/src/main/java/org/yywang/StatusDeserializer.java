@@ -19,5 +19,4 @@ public class StatusDeserializer implements ObjectDeserializer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
