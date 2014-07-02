@@ -89,10 +89,11 @@ window.tool = window.tool || {};
         }else{
             throw '没有找到该线的移动端点。';
         }
-        this._init();
         var ctx=canvas.getContext("2d");
+
         ctx.clearRect(this._actionScope.x,this._actionScope.y,this._actionScope.width,this._actionScope.height);
-        this.draw(canvas);
+        //this._init();
+       // this.draw(canvas);
     }
 
     tool.Line=Line;
