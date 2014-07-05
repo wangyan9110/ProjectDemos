@@ -11,6 +11,6 @@ public class SimpleJob implements Job{
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
-        System.out.println("执行了一个Job");
+        System.out.println("执行了一个Job"+jobExecutionContext.getJobDetail().getDescription());
     }
 }

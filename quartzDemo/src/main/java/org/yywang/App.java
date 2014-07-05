@@ -12,6 +12,8 @@ public class App
     public static void main( String[] args ){
         //创建一个JobDetail实例
         JobBuilder builder=JobBuilder.newJob(SimpleJob.class);
+        builder.withIdentity("test","test");
+        builder.withDescription("my test");
         JobDetail jobDetail=builder.build();
         //创建一个调度规则，1s中运行一次，现在开始
         Trigger trigger = TriggerBuilder.newTrigger().withSchedule(
