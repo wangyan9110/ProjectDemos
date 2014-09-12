@@ -1,0 +1,14 @@
+{
+     "version": "1.0.0",
+     "modules": [],
+     "preHandlers":[],
+     "afterHandlers"[],
+     "events": [
+         {
+             "name": "voice",
+             "describe": "音量控制",
+             "enable": true,
+             "handlers": ["org.yywang.app.modules.VoiceEventHandler"]
+         }
+     ]
+ }

@@ -1,0 +1,6 @@
+{
+    "version": "1.0.0",
+    "transmissions": {
+        "haier01": "org.yywang.app.transmission.HaierTransmission"
+    }
+}

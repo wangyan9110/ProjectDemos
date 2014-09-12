@@ -1,0 +1,12 @@
+{
+    "version": "1.2",
+    "modules": ["test"],
+    "events": [
+        {
+            "name": "tes",
+            "describe": "tes",
+            "enable": true,
+            "handlers": []
+        }
+    ]
+}
