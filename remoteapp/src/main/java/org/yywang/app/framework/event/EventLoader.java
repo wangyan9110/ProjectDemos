@@ -4,6 +4,7 @@ import org.yywang.app.framework.config.EventAppConfig;
 import org.yywang.app.framework.config.EventConfig;
 import org.yywang.app.framework.config.EventConfigUtils;
 import org.yywang.app.framework.exception.AppSysException;
+import org.yywang.app.framework.utils.CallingLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class EventLoader {
      * @author yywang5
      */
     public static void load(String fileName) {
+        CallingLogger.instance.append("EventLoader.load");
         EventAppConfig eventAppConfig = EventConfigUtils.get(fileName);
         if (eventAppConfig.getModules() != null && !eventAppConfig.getModules().isEmpty()) {
             List<String> appConfigNames = eventAppConfig.getModules();
@@ -27,6 +29,7 @@ public class EventLoader {
                     load(appConfigName);
             }
         }
+
         List<EventConfig> eventConfigs = eventAppConfig.getEvents();
         for (EventConfig eventConfig : eventConfigs) {
             List<String> handlers = eventConfig.getHandlers();

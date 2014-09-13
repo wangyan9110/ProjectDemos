@@ -39,6 +39,11 @@ public class Television {
         this.tvStatus = tvStatus;
     }
 
+    @Override
+    public String toString() {
+        return this.brand + "  " + this.model + "  " + tvStatus.getDes();
+    }
+
     public String getBrand() {
         return brand;
     }

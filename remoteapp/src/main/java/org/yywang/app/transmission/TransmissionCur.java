@@ -1,6 +1,7 @@
 package org.yywang.app.transmission;
 
 import org.yywang.app.framework.exception.AppBizExpection;
+import org.yywang.app.framework.utils.CallingLogger;
 
 /**
  * 当前传输协议
@@ -17,6 +18,7 @@ public enum TransmissionCur {
      * @param key 电视品牌+型号组成的key
      */
     public void init(String key){
+        CallingLogger.instance.append("TransmissionCur.init");
         transmission=TransmissionLoader.load(key);
     }
 

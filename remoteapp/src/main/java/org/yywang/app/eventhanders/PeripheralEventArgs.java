@@ -1,4 +1,4 @@
-package org.yywang.app.modules;
+package org.yywang.app.eventhanders;
 
 import org.yywang.app.framework.event.EventArgs;
 import org.yywang.app.model.PeripheralType;
@@ -19,6 +19,12 @@ public class PeripheralEventArgs extends EventArgs {
      * 外设类型
      */
     private PeripheralType peripheralType;
+
+    public PeripheralEventArgs(Object sender, String text, PeripheralType peripheralType) {
+        super(sender);
+        this.text = text;
+        this.peripheralType = peripheralType;
+    }
 
     public String getText() {
         return text;

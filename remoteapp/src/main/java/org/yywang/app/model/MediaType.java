@@ -9,7 +9,7 @@ public enum MediaType {
     /**
      * 视频
      */
-    Video,
+    video,
 
     /**
      * 音频

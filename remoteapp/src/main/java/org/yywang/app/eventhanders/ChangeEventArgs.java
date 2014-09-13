@@ -1,4 +1,4 @@
-package org.yywang.app.modules;
+package org.yywang.app.eventhanders;
 
 import org.yywang.app.framework.event.EventArgs;
 import org.yywang.app.model.ChangeType;
@@ -24,6 +24,17 @@ public class ChangeEventArgs extends EventArgs {
      * 跳转时的值
      */
     private int value = 1;
+
+    public ChangeEventArgs(Object sender, int value, ChangeType changeType) {
+        super(sender);
+        this.value = value;
+        this.changeType = changeType;
+    }
+
+    public ChangeEventArgs(Object sender, ChangeType changeType) {
+        super(sender);
+        this.changeType = changeType;
+    }
 
     public ChangeType getChangeType() {
         return changeType;

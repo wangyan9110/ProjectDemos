@@ -2,6 +2,7 @@ package org.yywang.app.framework.config;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.yywang.app.framework.exception.AppSysException;
+import org.yywang.app.framework.utils.CallingLogger;
 import org.yywang.app.framework.utils.FileUtils;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class EventConfigUtils {
      * @return 事件配置
      */
     public static EventAppConfig get(String fileName) {
+        CallingLogger.instance.append("EventAppConfig.get");
         String fileNameStr=fileName;
         if (!fileName.endsWith(".appconfig")) {
             fileNameStr=fileName+".appconfig";

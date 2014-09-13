@@ -4,6 +4,7 @@ import org.yywang.app.framework.config.TransmissionConfig;
 import org.yywang.app.framework.config.TransmissionConfigUtils;
 import org.yywang.app.framework.exception.AppSysException;
 import org.yywang.app.framework.exception.AppUnSupportException;
+import org.yywang.app.framework.utils.CallingLogger;
 
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class TransmissionLoader {
      * @return
      */
     public static Transmission load(String key) {
+        CallingLogger.instance.append("TransmissionLoader.load");
         TransmissionConfig config = TransmissionConfigUtils.get();
         Map<String, String> transMap = config.getTransmissions();
         String transClassName="";

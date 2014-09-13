@@ -1,14 +1,73 @@
 {
      "version": "1.0.0",
      "modules": [],
-     "preHandlers":[],
-     "afterHandlers"[],
      "events": [
          {
-             "name": "voice",
+             "name": "pre",
+             "describe": "前置事件（系统占用）",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.DataCollectionEventHandler"]
+         },
+         {
+             "name": "voiceCtr",
              "describe": "音量控制",
              "enable": true,
-             "handlers": ["org.yywang.app.modules.VoiceEventHandler"]
+             "handlers": ["org.yywang.app.eventhanders.VoiceEventHandler"]
+         },
+         {
+             "name": "channelCtr",
+             "describe": "频道控制",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.ChannelEventHandler"]
+         },
+         {
+             "name": "shutDownCtr",
+             "describe": "关机控制",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.ShutDownEventHandler"]
+         },
+         {
+             "name": "remoteControlCtr",
+             "describe": "模拟遥控器按键",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.RemoteControlEventHandler"]
+         },
+         {
+             "name": "mouseCtr",
+             "describe": "鼠标控制模拟",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.MouseEventHandler"]
+         },
+         {
+             "name": "keyboardCtr",
+             "describe": "键盘控制",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.KeyboardEventHandler"]
+         },
+         {
+             "name": "browseLocalMediaCtr",
+             "describe": "浏览本地媒体控制",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.BrowseLocalMediaEventHandler"]
+         },
+         {
+             "name": "localMediaPlayCtr",
+             "describe": "播放本地媒体内容",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.LocalMediaPlayEventHandler"]
+         },
+         {
+             "name": "browseOnlineMediaCtr",
+             "describe": "浏览在线视频内容",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.BrowseOnlineMediaEventHandler"]
+         },
+         {
+             "name": "onlineVideoPlayCtr",
+             "describe": "播放在线视频内容",
+             "enable": true,
+             "handlers": ["org.yywang.app.eventhanders.AdStrategyEventHandler",
+                          "org.yywang.app.eventhanders.OnlineVideoPlayEventHandler"]
          }
      ]
  }

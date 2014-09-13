@@ -56,10 +56,10 @@ public interface Transmission {
     /**
      * 发送播放本地资源信息
      *
-     * @param mediaType   媒体类型
-     * @param inputStream 媒体信息
+     * @param mediaType 媒体类型
+     * @param filePath  媒体信息
      */
-    void sendPlayLocalResCommand(MediaType mediaType, InputStream inputStream);
+    void sendPlayLocalResCommand(MediaType mediaType, String filePath);
 
     /**
      * 播放在线资源
@@ -76,4 +76,12 @@ public interface Transmission {
      * @param text           模拟内容
      */
     void sendPeriperalTypeCommand(PeripheralType peripheralType, String text);
+
+    /**
+     * 发送广告策略
+     *
+     * @param text 广告策略
+     * @param url  播放地址
+     */
+    void sendAdStrategyCommand(String text, String url);
 }

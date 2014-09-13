@@ -1,6 +1,7 @@
 package org.yywang.app.framework.event;
 
 import org.yywang.app.framework.exception.AppSysException;
+import org.yywang.app.framework.utils.CallingLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ public enum TopicManager {
      * @param topic 添加事件
      */
     public void addTopic(Topic topic) {
+
 //        if (topics.containsKey(topic.getName())) {
 //            throw new AppSysException(String.format(" %s is exited!", topic.getName()));
 //        }
@@ -44,6 +46,7 @@ public enum TopicManager {
     }
 
     public Topic[] getTopics() {
+        CallingLogger.instance.append("TopicManager.getTopics");
         return topics.values().toArray(new Topic[topics.size()]);
     }
 }

@@ -8,11 +8,20 @@ public enum TVStatus {
     /**
      * 在线
      */
-    online,
+    online("在线"),
 
     /**
      * 离线
      */
-    offline
+    offline("离线");
 
+    private String des;
+
+    private TVStatus(String des){
+        this.des=des;
+    }
+
+    public String getDes() {
+        return des;
+    }
 }

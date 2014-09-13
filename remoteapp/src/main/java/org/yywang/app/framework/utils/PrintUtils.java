@@ -25,15 +25,16 @@ public class PrintUtils {
      * @param waitCount 等待数
      */
     public static void println(String text, int waitCount) {
-        println(text);
+        System.out.print("=====>"+text);
         for (int index = 0; index < waitCount; index++) {
             try {
-                System.out.print(" .");
-                Thread.sleep(500);
+                System.out.print(".");
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 throw new AppSysException("线程出异常", e);
             }
         }
+        System.out.println("");
 
     }
 }

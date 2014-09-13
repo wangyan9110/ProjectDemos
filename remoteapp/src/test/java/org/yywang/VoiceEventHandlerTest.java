@@ -1,7 +1,7 @@
 package org.yywang;
 
 import org.junit.Test;
-import org.yywang.app.modules.ChangeEventArgs;
+import org.yywang.app.eventhanders.ChangeEventArgs;
 import org.yywang.app.model.ChangeType;
 import org.yywang.app.framework.event.EventLoader;
 import org.yywang.app.framework.event.EventTrigger;
